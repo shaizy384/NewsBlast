@@ -1,0 +1,45 @@
+{
+    "status": "ok",
+    "totalResults": 3,
+    "articles": [
+        {
+            "source": {
+                "id": "abc-news-au",
+                "name": "ABC News (AU)"
+            },
+            "author": "Simon Smale",
+            "title": "Australia's lopsided summer of cricket, beating South Africa and West Indies, unlikely to be an outlier",
+            "description": "Australia's summer of cricket was dramatically lopsided, but looking at where both Australia and South Africa go next, there is a concern that mismatches will become the norm.",
+            "url": "http://www.abc.net.au/news/2023-01-09/australia-lopsided-summer-of-cricket-south-africa-west-indies/101835674",
+            "urlToImage": "https://live-production.wcms.abc-cdn.net.au/3b46848aaa4f5eab50e2519acffa10d0?impolicy=wcms_crop_resize&cropH=1688&cropW=3000&xPos=0&yPos=57&width=862&height=485",
+            "publishedAt": "2023-01-08T19:49:03Z",
+            "content": "You'll be hard pushed to find anyone who will come away from the summer of cricket with much positivity.\r\nSure, Australia were excellent.\r\nSteve Smith, Marnus Labuschagne, David Warner, Usman Khawaja… [+6227 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "PCB hands Umar Akmal three-year ban from all cricket | ESPNcricinfo.com",
+            "description": "Penalty after the batsman pleaded guilty to not reporting corrupt approaches | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/29103103/pcb-hands-umar-akmal-three-year-ban-all-cricket",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1099495_800x450.jpg",
+            "publishedAt": "2020-04-27T11:41:47Z",
+            "content": "Umar Akmal's troubled cricket career has hit its biggest roadblock yet, with the PCB handing him a ban from all representative cricket for three years after he pleaded guilty of failing to report det… [+1506 chars]"
+        },
+        {
+            "source": {
+                "id": "espn-cric-info",
+                "name": "ESPN Cric Info"
+            },
+            "author": null,
+            "title": "What we learned from watching the 1992 World Cup final in full again | ESPNcricinfo.com",
+            "description": "Wides, lbw calls, swing - plenty of things were different in white-ball cricket back then | ESPNcricinfo.com",
+            "url": "http://www.espncricinfo.com/story/_/id/28970907/learned-watching-1992-world-cup-final-full-again",
+            "urlToImage": "https://a4.espncdn.com/combiner/i?img=%2Fi%2Fcricket%2Fcricinfo%2F1219926_1296x729.jpg",
+            "publishedAt": "2020-03-30T15:26:05Z",
+            "content": "Last week, we at ESPNcricinfo did something we have been thinking of doing for eight years now: pretend-live ball-by-ball commentary for a classic cricket match. We knew the result, yes, but we tried… [+6823 chars]"
+        }
+    ]
+}
