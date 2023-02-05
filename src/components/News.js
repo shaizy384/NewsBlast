@@ -16,12 +16,16 @@ function News(props) {
     }
 
     const updateData = async () => {
+        props.setProgress(10);
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
         setLoading(true);
         let data = await fetch(url);
+        props.setProgress(30);
         let parsedData = await data.json();
+        props.setProgress(70);
         setArticles(parsedData.articles);
         setTotalResults(parsedData.totalResults);
+        props.setProgress(100);
         setLoading(false);
     }
     useEffect(() => {
@@ -32,7 +36,6 @@ function News(props) {
 
     const handlePrevClick = async () => {
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page-1}&pageSize=${props.pageSize}`;
-        console.log(url);
         setLoading(true);
         let data = await fetch(url);
         let parsedData = await data.json();
@@ -43,7 +46,6 @@ function News(props) {
     }
     const handleNextClick = async () => {
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-        console.log(url);
         setLoading(true);
         let data = await fetch(url);
         let parsedData = await data.json();
