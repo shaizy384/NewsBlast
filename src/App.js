@@ -24,6 +24,7 @@ function App() {
       />
         <Routes>
           <Route exact path='/' element={<News key='general' setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country='us' category='general' />} />
+          <Route exact path='/NewsBlast' element={<News key='general' setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country='us' category='general' />} />
           <Route exact path='/business' element={<News key='business' setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country='us' category='business' />} />
           <Route exact path='/entertainment' element={<News key='entertainment' setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country='us' category='entertainment' />} />
           <Route exact path='/general' element={<News key='general' setProgress={setProgress} apiKey={apiKey} pageSize={pageSize} country='us' category='general' />} />

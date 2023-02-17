@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import NewsItem from './NewsItem'
 import Spinner from './Spinner';
 import PropTypes from 'prop-types'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 
 function News(props) {
-    
+
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
     const [page, setPage] = useState(1);
@@ -34,43 +35,62 @@ function News(props) {
         /* eslint-disable */
     }, [])
 
-    const handlePrevClick = async () => {
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page-1}&pageSize=${props.pageSize}`;
-        setLoading(true);
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        setArticles(parsedData.articles);
-        setTotalResults(parsedData.totalResults);
-        setPage(page-1);
-        setLoading(false);
-    }
-    const handleNextClick = async () => {
+    // const handlePrevClick = async () => {
+    //     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page - 1}&pageSize=${props.pageSize}`;
+    //     setLoading(true);
+    //     let data = await fetch(url);
+    //     let parsedData = await data.json();
+    //     setArticles(parsedData.articles);
+    //     setTotalResults(parsedData.totalResults);
+    //     setPage(page - 1);
+    //     setLoading(false);
+    // }
+    // const handleNextClick = async () => {
+    //     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page + 1}&pageSize=${props.pageSize}`;
+    //     setLoading(true);
+    //     let data = await fetch(url);
+    //     let parsedData = await data.json();
+    //     setArticles(parsedData.articles);
+    //     setTotalResults(parsedData.totalResults);
+    //     setPage(page + 1);
+    //     setLoading(false);
+    // }
+
+    const fetchMoreData=async()=>{
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${props.category}&apiKey=${props.apiKey}&page=${page+1}&pageSize=${props.pageSize}`;
-        setLoading(true);
+        setPage(page + 1);
         let data = await fetch(url);
         let parsedData = await data.json();
-        setArticles(parsedData.articles);
+        setArticles(articles.concat(parsedData.articles));
         setTotalResults(parsedData.totalResults);
-        setPage(page+1);
-        setLoading(false);
     }
 
     return (
         <div className="container my-3">
             <h2 className='text-center' style={{ margin: '90px 0px 30px 0px' }}>NewsBlast - Top {capitalizeFirstLetter(props.category)} HeadLines</h2>
             {loading && <Spinner />}
-            <div className="row">
-                {!loading && articles.map((element) => {
-                    return <div key={element.url} className="col-md-4">
-                        <NewsItem title={element.title} description={element.description} imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
-                    </div>
-                })}
-            </div>
-            <div className="container d-flex align-items-center justify-content-between">
+            <InfiniteScroll
+                dataLength={articles.length}
+                next={fetchMoreData}
+                hasMore={articles.length !== totalResults}
+                loader={<Spinner/>}
+            >
+                <div className="container">
+                <div className="row">
+                    {/* {!loading && articles.map((element) => { */}
+                    {articles.map((element) => {
+                        return <div className="col-md-4" key={element.url}>
+                            <NewsItem title={element.title} description={element.description} imgUrl={element.urlToImage} newsUrl={element.url} author={element.author} date={element.publishedAt} source={element.source.name} />
+                        </div>
+                    })}
+                </div>
+                </div>
+            </InfiniteScroll>
+            {/* <div className="container d-flex align-items-center justify-content-between">
                 <button disabled={page <= 1} type="button" className="btn btn-primary" onClick={handlePrevClick}>&larr; Previous</button>
                 {!loading && <p className='my-auto'>{page} of {Math.ceil(totalResults / `${props.pageSize}`)}</p>}
                 <button disabled={page + 1 > Math.ceil(totalResults / `${props.pageSize}`)} type="button" className="btn btn-primary" onClick={handleNextClick}>Next &rarr;</button>
-            </div>
+            </div> */}
         </div>
     )
 }
